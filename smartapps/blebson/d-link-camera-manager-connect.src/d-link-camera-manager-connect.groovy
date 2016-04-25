@@ -35,7 +35,7 @@ preferences {
             }
         } else {
             section("Initial Install") {
-                paragraph "This smartapp installs the Generic Video Camera Connect App so you can add multiple child video cameras. Click install / done then go to smartapps in the flyout menu and add new cameras or edit existing cameras."
+                paragraph "This smartapp installs the D-Link Camera Manager (Connect) App so you can add multiple D-Link IP cameras. Click 'Done' then go to smartapps in the flyout menu and add new cameras or edit existing cameras."
             }
         }
     }
