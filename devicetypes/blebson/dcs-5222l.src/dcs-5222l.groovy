@@ -180,7 +180,7 @@ metadata {
 }
 
 def parse(String description) {
-    log.debug "Parsing '${description}'"
+    log.debug "Parsing ${description}"
 if( description != "updated" ){
     def map = [:]
 	def retResult = []
@@ -261,7 +261,7 @@ if( description != "updated" ){
             sendEvent(name: "switch4", value: "on");
         }    
         
-        if (msg.body.contains("<code>ok</code>")) {
+        if (msg.body.contains("<code>ok</code>") & !msg.body.contains("<record><enable>0</enable>") & !msg.body.contains("<record><enable>1</enable>")) {
         	log.debug "Camera has moved."
             sendEvent(name: "image", value: "down");
             sendEvent(name: "image", value: "up");
@@ -885,7 +885,7 @@ def updated(){
 def configure(){
     sendEvent(name:"switch5", value:"on")   
     
-    log.debug parent.state.cameraIP
+    //log.debug parent.state.cameraIP
     state.cameraIP = parent.state.CameraIP
     state.cameraPort = parent.state.CameraPort
     state.videoIP = parent.state.VideoIP
