@@ -27,7 +27,7 @@ definition(
 
 
 preferences {
-    page(name: "mainPage", title: "Existing Camera", install: true, uninstall: true) {
+    page(name: "mainPage", title: "Existing Cameras", install: true, uninstall: true) {
         if(state?.installed) {
             section("Add a New Camera") {
                 app "Dlink Video Camera Child", "blebson", "Dlink Video Camera Child", title: "New Fixed D-Link Camera", page: "mainPage", multiple: true, install: true
