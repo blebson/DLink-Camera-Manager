@@ -33,23 +33,23 @@ If you don't see a camera on the list that you would like me to add; feel free t
 
 **Fixed Cameras:**
 
- - DCS-930L(*) - **V, I, M, MS**
- - DCS-931L(*) - **V, I, M, MS**
- - DCS-932L(*) - **V, I, M, MS, NV**
- - DCS-933L(*)- **V, I, M, MS, NV**
- - DCS-934L(*)- **V, I, M, MS, NV**
+ - DCS-930L(\*) - **V, I, M, MS**
+ - DCS-931L(\*) - **V, I, M, MS**
+ - DCS-932L(\*) - **V, I, M, MS, NV**
+ - DCS-933L(\*)- **V, I, M, MS, NV**
+ - DCS-934L(\*)- **V, I, M, MS, NV**
  - DCS-935L - **VS, I, M, MS, NV**
  - DCS-942L - **VS, I, M, PIR, MS, NV, VR**
- - DCS-2132L(*) - **VS, I, M, PIR, MS, NV, VR**
- - DCS-2310L(*) - **VS, I, M, PIR, MS, NV, VR**
- - DCS-2330L(*) - **VS, I, M, PIR, MS, NV, VR**
+ - DCS-2132L(\*) - **VS, I, M, PIR, MS, NV, VR**
+ - DCS-2310L(\*) - **VS, I, M, PIR, MS, NV, VR**
+ - DCS-2330L(\*) - **VS, I, M, PIR, MS, NV, VR**
 
 **PTZ Cameras:**
 
  - DCS-5009L - **V, I, PT, H, P, M, MS, NV**
  - DCS-5020L - **V, I, PT, H, P, M, MS, NV**
  - DCS-5029L - **VS, I, PT, H, P, M, PIR, MS, NV, VR**
- - DCS-5211L(*) - **VS, I, PT, H, P, M, PIR, MS, NV, VR**
+ - DCS-5211L(\*) - **VS, I, PT, H, P, M, PIR, MS, NV, VR**
  - DCS-5222L - **VS, I, PT, H, P, M, PIR, MS, NV, VR**
 
 _(*) - Camera has not been formally tested, please report any issues._
@@ -148,12 +148,15 @@ _(*) - Camera has not been formally tested, please report any issues._
 ##Sample D-Link Camera Views:
 
 **DCS-5222L:** 
+
 <img src="https://community.smartthings.com/uploads/default/original/3X/6/9/690639f38cac333a23c1170eb27af52a81ead81b.png" width="281" height="500"> <img src="http://community.smartthings.com/uploads/default/original/3X/5/b/5bb56ecce614734cff32fdeea75c9a12ac0a4b0a.png" width="281" height="500">
 
 **DCS-5020L:**
+
 <img src="http://community.smartthings.com/uploads/default/original/3X/6/9/6994ebebb174eb4c11d79d765ce8dae553dc82ee.png" width="281" height="500"> <img src="http://community.smartthings.com/uploads/default/original/3X/f/3/f308b0563467fd47ffdb8303e1aacdb1c38fa1a7.png" width="281" height="500">
 
 **DCS-942L:**
+
 <img src="http://community.smartthings.com/uploads/default/original/3X/7/f/7f5f4da87995373d5a65450f75b3d2f6df1d8c29.png" width="281" height="500"> <img src="http://community.smartthings.com/uploads/default/original/3X/1/8/180b1f569c8ae63c6596f0e54583dc19d57a3ec4.png" width="281" height="500">
 
 ----------
