@@ -1,5 +1,5 @@
 /**
- *	D-Link DCS-5020L v1.0.0
+ *	D-Link DCS-5020L v1.0.1
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -30,6 +30,8 @@ metadata {
         attribute "position", "string"
         attribute "switch2", "string"
         attribute "switch3", "string"
+        attribute "switch4", "string"
+        
         
         command "left"
 		command "right"
@@ -98,35 +100,35 @@ preferences {
             state "taking", label:'Taking', action: "", icon: "st.camera.take-photo", backgroundColor: "#53a7c0"
             state "image", label: "Take", action: "Image Capture.take", icon: "st.camera.camera", backgroundColor: "#FFFFFF", nextState:"taking"
         }
-        standardTile("up", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
+        standardTile("up", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
 			state "up", label: "", action: "up", icon: "st.samsung.da.oven_ic_up", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0", icon: "st.samsung.da.oven_ic_up"
 		}
-         standardTile("left", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
+         standardTile("left", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
 			state "left", label: "", action: "left", icon: "st.samsung.da.RAC_4line_01_ic_left", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0", icon: "st.samsung.da.RAC_4line_01_ic_left"
 		}
-          standardTile("home", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
+          standardTile("home", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
 			state "home", label: "Home", action: "home", icon: "st.Home.home2", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0", icon: "st.Home.home2"
 		}
-          standardTile("right", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
+          standardTile("right", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
 			state "right", label: "", action: "right", icon: "st.samsung.da.RAC_4line_03_ic_right", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0", icon: "st.samsung.da.RAC_4line_03_ic_right"
 		}
-         standardTile("down", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
+         standardTile("down", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
 			state "down", label: "", action: "down", icon: "st.samsung.da.oven_ic_down", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0", icon: "st.samsung.da.oven_ic_down"
 		}
-        valueTile("presetOne", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
+        valueTile("presetOne", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
 			state "presetOne", label: "1", action: "presetOne", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0"
 		}
-        valueTile("presetTwo", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
+        valueTile("presetTwo", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
 			state "presetTwo", label: "2", action: "presetTwo", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0"
 		}
-        valueTile("presetThree", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
+        valueTile("presetThree", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
 			state "presetThree", label: "3", action: "presetThree", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0"
 		}
@@ -151,7 +153,7 @@ preferences {
 			state "on", label: 'NV On', action: "nvOff", icon: "st.Weather.weather4", backgroundColor: "#4169E1", nextState: "toggle"  
             state "auto", label: 'NV Auto', action: "nvOn", icon: "st.motion.motion.active", backgroundColor: "#ccffcc", nextState: "toggle"  
 		}
-        standardTile("videoStart", "device.image", inactiveLabel: false) {
+        standardTile("videoStart", "device.start", inactiveLabel: false) {
         	state "start", action:"start", icon:"st.Entertainment.entertainment11"        
     	}
         valueTile("blank", "device.image"){
@@ -237,14 +239,14 @@ catch (Exception e) { //needed to catch java.lang.ArrayIndexOutOfBoundsException
     	//log.debug "Hit Exception $e in Parse"
     }
     device.deviceNetworkId = "ID_WILL_BE_CHANGED_AT_RUNTIME_" + (Math.abs(new Random().nextInt()) % 99999 + 1)
-    sendEvent(name: "image", value: "down");
-    sendEvent(name: "image", value: "up");
-    sendEvent(name: "image", value: "left");
-    sendEvent(name: "image", value: "right");
-    sendEvent(name: "image", value: "presetOne");
-    sendEvent(name: "image", value: "presetTwo");
-    sendEvent(name: "image", value: "presetThree");
-    sendEvent(name: "image", value: "home");
+    sendEvent(name: "switch4", value: "down");
+    sendEvent(name: "switch4", value: "up");
+    sendEvent(name: "switch4", value: "left");
+    sendEvent(name: "switch4", value: "right");
+    sendEvent(name: "switch4", value: "presetOne");
+    sendEvent(name: "switch4", value: "presetTwo");
+    sendEvent(name: "switch4", value: "presetThree");
+    sendEvent(name: "switch4", value: "home");
 }
 }
 

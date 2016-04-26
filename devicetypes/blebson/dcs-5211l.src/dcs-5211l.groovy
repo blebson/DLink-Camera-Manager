@@ -1,5 +1,5 @@
 /**
- *  D-Link DCS-5211L v1.0.0
+ *  D-Link DCS-5211L v1.0.1
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -32,6 +32,7 @@ metadata {
         attribute "switch3", "string"
         attribute "switch4", "string"
         attribute "switch5", "string"
+        attribute "switch6", "string"
         
         command "motionOn"
         command "motionOff"
@@ -120,35 +121,35 @@ metadata {
             state "toggle", label:'toggle', action: "", icon: "st.motion.buttons.rec", backgroundColor: "#53a7c0"
 			state "on", label: 'PIR On', action: "pirOff", icon: "st.custom.buttons.rec", backgroundColor: "#EE0000", nextState: "toggle"
 		}
-        standardTile("up", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
+        standardTile("up", "device.switch6", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
 			state "up", label: "", action: "up", icon: "st.samsung.da.oven_ic_up", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0", icon: "st.samsung.da.oven_ic_up"
 		}
-         standardTile("left", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
+         standardTile("left", "device.switch6", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
 			state "left", label: "", action: "left", icon: "st.samsung.da.RAC_4line_01_ic_left", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0", icon: "st.samsung.da.RAC_4line_01_ic_left"
 		}
-          standardTile("home", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
+          standardTile("home", "device.switch6", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
 			state "home", label: "Home", action: "home", icon: "st.Home.home2", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0", icon: "st.Home.home2"
 		}
-          standardTile("right", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
+          standardTile("right", "device.switch6", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
 			state "right", label: "", action: "right", icon: "st.samsung.da.RAC_4line_03_ic_right", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0", icon: "st.samsung.da.RAC_4line_03_ic_right"
 		}
-         standardTile("down", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
+         standardTile("down", "device.switch6", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false, decoration: "flat") {
 			state "down", label: "", action: "down", icon: "st.samsung.da.oven_ic_down", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0", icon: "st.samsung.da.oven_ic_down"
 		}
-        valueTile("presetOne", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
+        valueTile("presetOne", "device.switch6", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
 			state "presetOne", label: "1", action: "presetOne", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0"            
 		}
-        valueTile("presetTwo", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
+        valueTile("presetTwo", "device.switch6", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
 			state "presetTwo", label: "2", action: "presetTwo", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0"
 		}
-        valueTile("presetThree", "device.image", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
+        valueTile("presetThree", "device.switch6", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
 			state "presetThree", label: "3", action: "presetThree", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0"
 		}
@@ -262,14 +263,14 @@ if( description != "updated" ){
         
         if (msg.body.contains("<code>ok</code>") & !msg.body.contains("<record><enable>0</enable>") & !msg.body.contains("<record><enable>1</enable>")) {
         	log.debug "Camera has moved."
-            sendEvent(name: "image", value: "down");
-            sendEvent(name: "image", value: "up");
-            sendEvent(name: "image", value: "left");
-            sendEvent(name: "image", value: "right");
-            sendEvent(name: "image", value: "presetOne");
-            sendEvent(name: "image", value: "presetTwo");
-            sendEvent(name: "image", value: "presetThree");
-            sendEvent(name: "image", value: "home");
+            sendEvent(name: "switch6", value: "down");
+            sendEvent(name: "switch6", value: "up");
+            sendEvent(name: "switch6", value: "left");
+            sendEvent(name: "switch6", value: "right");
+            sendEvent(name: "switch6", value: "presetOne");
+            sendEvent(name: "switch6", value: "presetTwo");
+            sendEvent(name: "switch6", value: "presetThree");
+            sendEvent(name: "switch6", value: "home");
        }    
     }    
     device.deviceNetworkId = "ID_WILL_BE_CHANGED_AT_RUNTIME_" + (Math.abs(new Random().nextInt()) % 99999 + 1)
