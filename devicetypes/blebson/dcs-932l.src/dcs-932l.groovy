@@ -1,5 +1,5 @@
 /**
- *	D-Link DCS-932L v1.0.2
+ *	D-Link DCS-932L v1.0.3
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
