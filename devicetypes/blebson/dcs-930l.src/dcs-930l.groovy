@@ -1,5 +1,5 @@
 /**
- *	D-Link DCS-930L v1.0.0
+ *	D-Link DCS-930L v1.0.1
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
