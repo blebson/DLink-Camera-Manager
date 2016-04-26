@@ -49,8 +49,8 @@ metadata {
     tiles (scale: 2) {
      multiAttributeTile(name: "videoPlayer", type: "videoPlayer", width: 6, height: 4) {
 			tileAttribute("device.switch2", key: "CAMERA_STATUS") {
-				attributeState("on", label: "Active", icon: "st.camera.dlink-indoor", action: "vidOff", backgroundColor: "#79b821", defaultState: true)
-				attributeState("off", label: "Inactive", icon: "st.camera.dlink-indoor", action: "vidOn", backgroundColor: "#ffffff")
+				attributeState("on", label: "Active", icon: "st.camera.dlink-indoor", action: "switch2.off", backgroundColor: "#79b821", defaultState: true)
+				attributeState("off", label: "Inactive", icon: "st.camera.dlink-indoor", action: "switch2.on", backgroundColor: "#ffffff")
 				attributeState("restarting", label: "Connecting", icon: "st.camera.dlink-indoor", backgroundColor: "#53a7c0")
 				attributeState("unavailable", label: "Unavailable", icon: "st.camera.dlink-indoor", action: "refresh.refresh", backgroundColor: "#F22000")
 			}
