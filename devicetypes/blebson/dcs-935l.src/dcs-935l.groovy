@@ -1,5 +1,5 @@
 /**
- *  D-Link DCS-935L v1.0.0
+ *  D-Link DCS-935L v1.0.1
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -40,8 +40,11 @@ metadata {
         command "nvOff"
         command "nvAuto"        
         command "start"
-	command "stop"
+		command "stop"
         command "configure"
+        command "vidOn"
+        command "vidOff"
+        
 	}
 
     preferences {

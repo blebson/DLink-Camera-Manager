@@ -1,5 +1,5 @@
 /**
- *	D-Link DCS-930L v1.0.5
+ *	D-Link DCS-930L v1.0.6
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -30,6 +30,9 @@ metadata {
     	attribute "switch2", "string"
         
         command "start"
+        command "stop"
+        command "vidOn"
+        command "vidOff"
         command "motionOn"
         command "motionOff"        
         command "configure"
@@ -440,4 +443,18 @@ def configure(){
 
 def getInHomeURL() {
    [InHomeURL: "http://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/mjpeg.cgi?channel=1.mjpeg"]
+}
+
+def stop() {
+	log.trace "stop()"
+}
+
+def vidOn() {
+	log.trace "on()"
+	// no-op
+}
+
+def vidOff() {
+	log.trace "off()"
+	// no-op
 }

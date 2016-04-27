@@ -1,5 +1,5 @@
 /**
- *	D-Link DCS-932L v1.0.4
+ *	D-Link DCS-932L v1.0.5
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -30,6 +30,10 @@ metadata {
     	attribute "switch2", "string"
         attribute "switch3", "string"
         
+        command "start"
+        command "stop"
+        command "vidOn"
+        command "vidOff"
         command "motionOn"
         command "motionOff"        
         command "configure"
@@ -49,8 +53,8 @@ metadata {
     tiles (scale: 2) {
      multiAttributeTile(name: "videoPlayer", type: "videoPlayer", width: 6, height: 4) {
 			tileAttribute("device.switch2", key: "CAMERA_STATUS") {
-				attributeState("on", label: "Active", icon: "st.camera.dlink-indoor", action: "switch2.off", backgroundColor: "#79b821", defaultState: true)
-				attributeState("off", label: "Inactive", icon: "st.camera.dlink-indoor", action: "switch2.on", backgroundColor: "#ffffff")
+				attributeState("on", label: "Active", icon: "st.camera.dlink-indoor", action: "vidOff", backgroundColor: "#79b821", defaultState: true)
+				attributeState("off", label: "Inactive", icon: "st.camera.dlink-indoor", action: "vidOn", backgroundColor: "#ffffff")
 				attributeState("restarting", label: "Connecting", icon: "st.camera.dlink-indoor", backgroundColor: "#53a7c0")
 				attributeState("unavailable", label: "Unavailable", icon: "st.camera.dlink-indoor", action: "refresh.refresh", backgroundColor: "#F22000")
 			}
@@ -474,8 +478,8 @@ def refresh(){
 def start() {
 	log.trace "start()"
 	def dataLiveVideo = [
-		OutHomeURL  : "http://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/mjpeg.cgi?channel=1",
-		InHomeURL   : "http://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/mjpeg.cgi?channel=1",
+		OutHomeURL  : "http://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/mjpeg.cgi?channel=1.mjpeg",
+		InHomeURL   : "http://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/mjpeg.cgi?channel=1.mjpeg",
 		ThumbnailURL: "http://cdn.device-icons.smartthings.com/camera/dlink-indoor@2x.png",
 		cookie      : [key: "key", value: "value"]
 	]
@@ -512,5 +516,19 @@ def configure(){
 }
 
 def getInHomeURL() {
-   [InHomeURL: "http://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/mjpeg.cgi?channel=1"]
+   [InHomeURL: "http://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/mjpeg.cgi?channel=1.mjpeg"]
+}
+
+def stop() {
+	log.trace "stop()"
+}
+
+def vidOn() {
+	log.trace "on()"
+	// no-op
+}
+
+def vidOff() {
+	log.trace "off()"
+	// no-op
 }
