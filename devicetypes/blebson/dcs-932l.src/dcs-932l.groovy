@@ -1,5 +1,5 @@
 /**
- *	D-Link DCS-932L v1.0.3
+ *	D-Link DCS-932L v1.0.4
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -474,8 +474,8 @@ def refresh(){
 def start() {
 	log.trace "start()"
 	def dataLiveVideo = [
-		OutHomeURL  : "http://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/mjpeg.cgi?channel=1.mjpeg",
-		InHomeURL   : "http://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/mjpeg.cgi?channel=1.mjpeg",
+		OutHomeURL  : "http://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/mjpeg.cgi?channel=1",
+		InHomeURL   : "http://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/mjpeg.cgi?channel=1",
 		ThumbnailURL: "http://cdn.device-icons.smartthings.com/camera/dlink-indoor@2x.png",
 		cookie      : [key: "key", value: "value"]
 	]
@@ -512,5 +512,5 @@ def configure(){
 }
 
 def getInHomeURL() {
-   [InHomeURL: "http://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/mjpeg.cgi?channel=1.mjpeg"]
+   [InHomeURL: "http://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/mjpeg.cgi?channel=1"]
 }
