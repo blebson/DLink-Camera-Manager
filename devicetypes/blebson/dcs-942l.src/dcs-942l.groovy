@@ -1,5 +1,5 @@
 /**
- *  D-Link DCS-942L v1.0.0
+ *  D-Link DCS-942L v1.0.1
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -620,8 +620,8 @@ def refresh(){
 def start() {
 	log.trace "start()"
 	def dataLiveVideo = [
-		OutHomeURL  : "rtsp://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/OVProfile00",
-		InHomeURL   : "rtsp://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/OVProfile00",
+		OutHomeURL  : "rtsp://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/play1.sdp",
+		InHomeURL   : "rtsp://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/play1.sdp",
 		ThumbnailURL: "http://cdn.device-icons.smartthings.com/camera/dlink-indoor@2x.png",
 		cookie      : [key: "key", value: "value"]
 	]
@@ -671,5 +671,5 @@ def configure(){
 }
 
 def getInHomeURL() {
-   [InHomeURL: "rtsp://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/OVProfile00"]
+   [InHomeURL: "rtsp://${state.cameraUser}:${state.cameraPassword}@${state.videoIP}:${state.videoPort}/play1.sdp"]
 }
