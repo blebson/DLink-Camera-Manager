@@ -32,7 +32,7 @@ preferences {
         }
         section("Add a Camera") {
         	input("CameraType","enum", title: "Camera Model", description: "Please select your camera model", required:false, submitOnChange: true,
-            options: ["DCS-930L", "DCS-931L", "DCS-932L", "DCS-933L", "DCS-934L", "DCS-935L", "DCS-942L", "DCS-2132L", "DCS-2310L", "DCS-2330L", "DCS-2630L"], displayDuringSetup: true)
+            options: ["DCS-930L", "DCS-931L", "DCS-932L", "DCS-933L", "DCS-934L", "DCS-935L", "DCS-942L", "DCS-2132L", "DCS-2210L", "DCS-2310L", "DCS-2330L", "DCS-2630L"], displayDuringSetup: true)
             }
         section("Camera Settings:"){
         	input("CameraIP", "string", title:"Camera IP Address", description: "Please enter your camera's IP Address", required: true, displayDuringSetup: true)
