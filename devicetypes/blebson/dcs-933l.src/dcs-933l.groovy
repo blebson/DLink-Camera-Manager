@@ -1,5 +1,5 @@
 /**
- *	D-Link DCS-933L v1.0.2
+ *	D-Link DCS-933L v1.0.3
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -35,7 +35,10 @@ metadata {
         command "vidOn"
         command "vidOff"
         command "motionOn"
-        command "motionOff"        
+        command "motionOff"
+        command "nvOff"
+        command "nvOn"
+        command "nvAuto"
         command "configure"
 	}
     
@@ -270,7 +273,7 @@ def nightCmd(String attr)
     log.debug "The device id configured is: $device.deviceNetworkId"
     
     def headers = [:] 
-    headers.put("HOST", "$host:$CameraPort")
+    headers.put("HOST", "$host:$state.cameraPort")
     headers.put("Authorization", userpass)
     
     log.debug "The Header is $headers"
