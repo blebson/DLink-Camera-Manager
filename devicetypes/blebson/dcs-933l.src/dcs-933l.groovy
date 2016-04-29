@@ -1,5 +1,5 @@
 /**
- *	D-Link DCS-933L v1.0.3
+ *	D-Link DCS-933L v1.0.4
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -263,11 +263,11 @@ def motionCmd(int motion)
   
 def nightCmd(String attr)
 {
-	def userpassascii = "${CameraUser}:${CameraPassword}"
+	def userpassascii = "${state.cameraUser}:${state.cameraPassword}"
 	def userpass = "Basic " + userpassascii.encodeAsBase64().toString()
-    def host = CameraIP 
+    def host = state.cameraIP 
     def hosthex = convertIPtoHex(host)
-    def porthex = convertPortToHex(CameraPort)
+    def porthex = convertPortToHex(state.cameraPort)
     device.deviceNetworkId = "$hosthex:$porthex" 
     
     log.debug "The device id configured is: $device.deviceNetworkId"
