@@ -38,7 +38,7 @@ preferences {
         	input("CameraIP", "string", title:"Camera IP Address", description: "Please enter your camera's IP Address", required: true, displayDuringSetup: true)
     		input("CameraPort", "string", title:"Camera Port", description: "Please enter your camera's HTTP Port", defaultValue: 80 , required: true, displayDuringSetup: true)
     		input("VideoIP", "string", title:"Video IP Address", description: "Please enter your camera's IP Address (use external IP if you are using port forwarding)", required: true, displayDuringSetup: true)
-    		input("VideoPort", "string", title:"Video Port", description: "Please enter your camera's Video Port (use external Port if you are using port forwarding)", defaultValue: 554 , required: true, displayDuringSetup: true)
+    		input("VideoPort", "string", title:"Video Port", description: "Please enter your camera's Video Port (use external Port if you are using port forwarding)", required: true, displayDuringSetup: true)
     		input("CameraUser", "string", title:"Camera User", description: "Please enter your camera's username", required: false, displayDuringSetup: true)
     		input("CameraPassword", "password", title:"Camera Password", description: "Please enter your camera's password", required: false, displayDuringSetup: true)
             }
