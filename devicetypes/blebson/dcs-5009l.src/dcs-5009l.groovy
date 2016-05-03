@@ -1,5 +1,5 @@
 /**
- *	D-Link DCS-5009L v1.0.1
+ *	D-Link DCS-5009L v1.0.2
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -166,6 +166,8 @@ preferences {
 
 def parse(String description) {
     log.debug "Parsing '${description}'"
+    def check = 0
+    
 if( description != "updated" ){
     try{
     def map = [:]
@@ -182,12 +184,14 @@ if( description != "updated" ){
 	if (descMap["bucket"] && descMap["key"]) {
     log.debug "putImageInS3"
 		putImageInS3(descMap)
+        check = 1
 	}      
     else if (descMap["headers"] && descMap["body"]){
     
     
     	def body = new String(descMap["body"].decodeBase64())
         log.debug "Body: ${body}"
+        check = 1
         
     }
     
@@ -238,14 +242,17 @@ catch (Exception e) { //needed to catch java.lang.ArrayIndexOutOfBoundsException
     	//log.debug "Hit Exception $e in Parse"
     }
     device.deviceNetworkId = "ID_WILL_BE_CHANGED_AT_RUNTIME_" + (Math.abs(new Random().nextInt()) % 99999 + 1)
-    sendEvent(name: "switch4", value: "down");
-    sendEvent(name: "switch4", value: "up");
-    sendEvent(name: "switch4", value: "left");
-    sendEvent(name: "switch4", value: "right");
-    sendEvent(name: "switch4", value: "presetOne");
-    sendEvent(name: "switch4", value: "presetTwo");
-    sendEvent(name: "switch4", value: "presetThree");
-    sendEvent(name: "switch4", value: "home");
+    
+    if(check != 1){
+        sendEvent(name: "switch4", value: "down");
+        sendEvent(name: "switch4", value: "up");
+        sendEvent(name: "switch4", value: "left");
+        sendEvent(name: "switch4", value: "right");
+        sendEvent(name: "switch4", value: "presetOne");
+        sendEvent(name: "switch4", value: "presetTwo");
+        sendEvent(name: "switch4", value: "presetThree");
+        sendEvent(name: "switch4", value: "home");
+    }
 }
 }
 
