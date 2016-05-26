@@ -34,8 +34,6 @@ metadata {
         command "stop"
         command "vidOn"
         command "vidOff"
-        command "motionOn"
-        command "motionOff"
         command "nvOff"
         command "nvOn"
         command "nvAuto"

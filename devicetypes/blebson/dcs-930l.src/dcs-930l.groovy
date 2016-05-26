@@ -32,9 +32,7 @@ metadata {
         command "start"
         command "stop"
         command "vidOn"
-        command "vidOff"
-        command "motionOn"
-        command "motionOff"        
+        command "vidOff"      
         command "configure"
 	}
     

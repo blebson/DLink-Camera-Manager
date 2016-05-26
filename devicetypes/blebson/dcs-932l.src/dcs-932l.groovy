@@ -36,9 +36,7 @@ metadata {
         command "nvOn"
         command "nvAuto"
         command "vidOn"
-        command "vidOff"
-        command "motionOn"
-        command "motionOff"        
+        command "vidOff"       
         command "configure"
 	}
     

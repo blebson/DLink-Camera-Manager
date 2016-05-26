@@ -34,8 +34,6 @@ metadata {
         attribute "switch5", "string"
         attribute "switch6", "string"
         
-        command "motionOn"
-        command "motionOff"
         command "pirOn"
         command "pirOff"
         command "nvOn"

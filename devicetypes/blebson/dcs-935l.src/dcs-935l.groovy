@@ -32,10 +32,6 @@ metadata {
         attribute "switch4", "string"
         attribute "switch5", "string"
         
-        
-        
-        command "motionOn"
-        command "motionOff"        
         command "nvOn"
         command "nvOff"
         command "nvAuto"        
