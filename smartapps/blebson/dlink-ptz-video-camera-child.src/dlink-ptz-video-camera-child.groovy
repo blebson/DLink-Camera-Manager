@@ -31,7 +31,7 @@ preferences {
         }
         section("Add a Camera") {
         	input("CameraType","enum", title: "Camera Model", description: "Please select your camera model", required:false, submitOnChange: true,
-            options: ["DCS-5009L", "DCS-5010L", "DCS-5020L", "DCS-5029L", "DCS-5211L", "DCS-5222L"], displayDuringSetup: true)
+            options: ["DCS-5009L", "DCS-5010L", "DCS-5020L", "DCS-5029L", "DCS-5030L", "DCS-5211L", "DCS-5222L"], displayDuringSetup: true)
             }
         section("Camera Settings:"){
         	input("CameraIP", "string", title:"Camera IP Address", description: "Please enter your camera's IP Address", required: true, displayDuringSetup: true)
