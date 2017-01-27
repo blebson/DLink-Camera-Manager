@@ -1,4 +1,4 @@
-/**
+/*
  *	D-Link DCS-5030L v1.0.0
  *	Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *      5030L updates contributed by Eric S. (@E_sch) 
@@ -262,15 +262,18 @@ def parse(String description) {
 			def descMap = parseDescriptionAsMap(description)
 			def msg = parseLanMessage(description)
 			if(msg.status != 200) {			// the 5030L somtimes returns null status, but command worked
-				log.warn "msg.status ${msg.status}         msg.data ${msg.data}"
+				log.warn "DESCRIPTION: ${description} DESCMAP: ${descMap} MSG: ${msg} MSG.STATUS ${msg.status}  MSG.DATA ${msg.data}"
 			}
 			//log.error "msg ${msg}"
 			//log.error "msg.status ${msg.status}         msg.data ${msg.data}"
 	
 			//Image
 			if(descMap["bucket"] && descMap["key"]) {
-				log.debug "putImageInS3"
-				putImageInS3(descMap)
+				try {
+					storeTemporaryImage(descMap.key, getPictureName())
+				} catch(Exception e) {
+					log.error e
+				}
 			} else if(descMap["headers"] && descMap["body"]) {
 				def body = new String(descMap["body"].decodeBase64())
 				log.trace "Body: ${body}"
@@ -448,27 +451,6 @@ def audioCmd(int attr) {
 	def method = "GET"
 
 	doCmd(method, path)
-}
-
-def putImageInS3(map) {
-	log.debug "firing s3"
-	def s3ObjectContent
-	try {
-		def imageBytes = getS3Object(map.bucket, map.key + ".jpg")
-		if(imageBytes)
-		{
-			s3ObjectContent = imageBytes.getObjectContent()
-			def bytes = new ByteArrayInputStream(s3ObjectContent.bytes)
-			storeImage(getPictureName(), bytes)
-		}
-	}
-	catch(Exception e) {
-		log.error "putImageInS3", e
-	}
-	finally {
-		//Explicitly close the stream
-		if(s3ObjectContent) { s3ObjectContent.close() }
-	}
 }
 
 def parseDescriptionAsMap(description) {
