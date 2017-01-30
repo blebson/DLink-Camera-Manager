@@ -1,5 +1,5 @@
 /**
- *	D-Link DCS-5020L v1.0.2
+ *	D-Link DCS-5020L v1.0.3
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -175,6 +175,9 @@ if( description != "updated" ){
 	def descMap = parseDescriptionAsMap(description)
     def msg = parseLanMessage(description)
     
+    if(msg.status != 200) {			// the 5020L somtimes returns null status, but command worked
+				log.warn "DESCRIPTION: ${description} DESCMAP: ${descMap} MSG: ${msg} MSG.STATUS ${msg.status}  MSG.DATA ${msg.data}"
+			}
     
     log.debug msg
     log.debug "status ${msg.status}"
@@ -182,9 +185,12 @@ if( description != "updated" ){
     
 	//Image
 	if (descMap["bucket"] && descMap["key"]) {
-    log.debug "putImageInS3"
-		putImageInS3(descMap)
-        check = 1
+    try {
+					storeTemporaryImage(descMap.key, getPictureName())
+				} catch(Exception e) {
+					log.error e
+				}
+                check = 1
 	}      
     else if (descMap["headers"] && descMap["body"]){
     
@@ -417,28 +423,6 @@ def nightCmd(String attr)
     }
   
  
-}
-
-def putImageInS3(map) {
-	log.debug "firing s3"
-    def s3ObjectContent
-    try {
-        def imageBytes = getS3Object(map.bucket, map.key + ".jpg")
-        
-        if(imageBytes)
-        {
-            s3ObjectContent = imageBytes.getObjectContent()
-            def bytes = new ByteArrayInputStream(s3ObjectContent.bytes)
-            storeImage(getPictureName(), bytes)
-        }
-    }
-    catch(Exception e) {
-        log.error e
-    }
-	finally {
-    //Explicitly close the stream
-		if (s3ObjectContent) { s3ObjectContent.close() }
-	}
 }
 
 def parseDescriptionAsMap(description) {

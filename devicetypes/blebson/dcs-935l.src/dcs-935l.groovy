@@ -1,5 +1,5 @@
 /**
- *  D-Link DCS-935L v1.0.1
+ *  D-Link DCS-935L v1.0.2
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -137,7 +137,11 @@ def parse(String description) {
     
 	//Image
 	if (descMap["bucket"] && descMap["key"]) {
-		putImageInS3(descMap)
+		try {
+					storeTemporaryImage(descMap.key, getPictureName())
+				} catch(Exception e) {
+					log.error e
+				}
 	}      
     else if (descMap["headers"] && descMap["body"]){
     	def body = new String(descMap["body"].decodeBase64())
@@ -381,27 +385,6 @@ def nightCmd(String attr)
     	log.debug "Hit Exception $e on $hubAction"
     }
    
-}
-
-def putImageInS3(map) {
-	log.debug "firing s3"
-    def s3ObjectContent
-    try {
-        def imageBytes = getS3Object(map.bucket, map.key + ".jpg")
-        if(imageBytes)
-        {
-            s3ObjectContent = imageBytes.getObjectContent()
-            def bytes = new ByteArrayInputStream(s3ObjectContent.bytes)
-            storeImage(getPictureName(), bytes)
-        }
-    }
-    catch(Exception e) {
-        log.error e
-    }
-	finally {
-    //Explicitly close the stream
-		if (s3ObjectContent) { s3ObjectContent.close() }
-	}
 }
 
 def parseDescriptionAsMap(description) {

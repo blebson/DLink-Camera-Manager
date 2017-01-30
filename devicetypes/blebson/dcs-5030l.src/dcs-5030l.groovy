@@ -1,5 +1,5 @@
 /*
- *	D-Link DCS-5030L v1.0.0
+ *	D-Link DCS-5030L v1.0.1
  *	Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *      5030L updates contributed by Eric S. (@E_sch) 
  *
