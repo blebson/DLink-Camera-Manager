@@ -1,5 +1,5 @@
 /*
- *	D-Link DCS-5030L v1.0.1
+ *	D-Link DCS-5030L v1.0.2
  *	Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *      5030L updates contributed by Eric S. (@E_sch) 
  *
@@ -268,9 +268,10 @@ def parse(String description) {
 			//log.error "msg.status ${msg.status}         msg.data ${msg.data}"
 	
 			//Image
-			if(descMap["bucket"] && descMap["key"]) {
+			//if(descMap["bucket"] && descMap["key"]) {
+			if(descMap["tempImageKey"] ) {
 				try {
-					storeTemporaryImage(descMap.key, getPictureName())
+					storeTemporaryImage(descMap.tempImageKey, getPictureName())
 				} catch(Exception e) {
 					log.error e
 				}
