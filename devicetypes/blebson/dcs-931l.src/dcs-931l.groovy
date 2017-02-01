@@ -1,5 +1,5 @@
 /**
- *	D-Link DCS-931L v1.0.3
+ *	D-Link DCS-931L v1.0.4
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -119,9 +119,9 @@ def parse(String description) {
     //log.debug "data ${msg.data}"
     
 	//Image
-	if (descMap["bucket"] && descMap["key"]) {
-		try {
-					storeTemporaryImage(descMap.key, getPictureName())
+	if(descMap["tempImageKey"] ) {
+				try {
+					storeTemporaryImage(descMap.tempImageKey, getPictureName())
 				} catch(Exception e) {
 					log.error e
 				}

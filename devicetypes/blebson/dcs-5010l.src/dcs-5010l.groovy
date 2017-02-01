@@ -1,5 +1,5 @@
 /**
- *	D-Link DCS-5010L v1.0.1
+ *	D-Link DCS-5010L v1.0.2
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -181,10 +181,9 @@ if( description != "updated" ){
     log.debug "data ${msg.data}"
     
 	//Image
-	if (descMap["bucket"] && descMap["key"]) {
-    log.debug "putImageInS3"
-		try {
-					storeTemporaryImage(descMap.key, getPictureName())
+	if(descMap["tempImageKey"] ) {
+				try {
+					storeTemporaryImage(descMap.tempImageKey, getPictureName())
 				} catch(Exception e) {
 					log.error e
 				}
