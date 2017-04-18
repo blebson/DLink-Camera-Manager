@@ -1,5 +1,5 @@
 /**
- *	D-Link DCS-5010L v1.0.2
+ *	D-Link DCS-5010L v1.0.3
  *  Image Capture and Video Streaming courtesy Patrick Stuart (patrick@patrickstuart.com)
  *  
  *  Copyright 2015 blebson
@@ -120,15 +120,15 @@ preferences {
 			state "down", label: "", action: "down", icon: "st.samsung.da.oven_ic_down", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0", icon: "st.samsung.da.oven_ic_down"
 		}
-        valueTile("presetOne", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
+        standardTile("presetOne", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
 			state "presetOne", label: "1", action: "presetOne", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0"
 		}
-        valueTile("presetTwo", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
+        standardTile("presetTwo", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
 			state "presetTwo", label: "2", action: "presetTwo", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0"
 		}
-        valueTile("presetThree", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
+        standardTile("presetThree", "device.switch4", width: 1, height: 1, canChangeIcon: false,  canChangeBackground: false) {
 			state "presetThree", label: "3", action: "presetThree", nextState: "moving"
             state "moving", label: "moving", action:"", backgroundColor: "#53a7c0"
 		}
