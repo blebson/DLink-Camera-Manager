@@ -18,6 +18,7 @@
 metadata {
 	definition (name: "DCS-5030L", author: "Ben Lebson", namespace: "blebson") {
 
+		capability "Actuator"
 		capability "Image Capture"
 		capability "Sensor"
 		capability "Switch"
